@@ -1,3 +1,4 @@
+/// <reference path="./imdb-sdk.d.ts" />
 declare module 'imdb-sdk' {
 	export interface MovieData {
 		"#TITLE": string;
