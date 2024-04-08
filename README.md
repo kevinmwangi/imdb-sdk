@@ -27,6 +27,10 @@ Refactor `getRandomMovie()` to handle logic fo randomly get a movie without para
 
 ## Production
 
+Run the TypeScript compiler to compile the SDK code into JavaScript that can be used in any JavaScript environment.
+```bash
+npx tsc
+```
 
 `TODO:`
 Setup  https://registry.npmjs.org/ to publish in `npm registry` when you run `npm publish`
