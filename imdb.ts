@@ -1,5 +1,5 @@
+/// <reference path="./imdb-sdk.d.ts" />
 import axios from 'axios';
-
 const SEARCH_API = 'https://search.imdbot.workers.dev/';
 
 export class IMDB {

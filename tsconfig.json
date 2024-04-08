@@ -9,5 +9,6 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types", "./imdb-sdk.d.ts"]
-  }
+  },
+  "include": ["./imdb-sdk.d.ts"]
 }
