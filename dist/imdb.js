@@ -18,125 +18,32 @@ const SEARCH_API = 'https://search.imdbot.workers.dev/';
 class IMDB {
     /**
      * @param {string} query
-     * @return {Promise<import('imdb').ResponseData | undefined>}
+     * @return {Promise<ResponseData | undefined>}
      */
     static getRandomMovie(query) {
         return __awaiter(this, void 0, void 0, function* () {
-            return axios_1.default.get(`${SEARCH_API}`, { params: { q: query } })
-                .then(response => {
-                // handle success
-                return response.data;
-            })
-                .catch(error => {
-                /** ------------------------------------------------------
-                 * TODO: - OPTION 1: Set up Winston to persist logs or
-                 *       - OPTION 2: Set up Sentry
-                 * ------------------------------------------------------
-                 * I prefer sentry because of it session replay
-                 * feature. Helps in knowing what actions the
-                 * user performed that led to an Error
-                 * ------------------------------------------------------*/
-                if (error.response) {
-                    // The request was made and the server responded with a status code
-                    // that falls out of the range of 2xx
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                }
-                else if (error.request) {
-                    // The request was made but no response was received
-                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                    // http.ClientRequest in node.js
-                    console.log(error.request);
-                }
-                else {
-                    // Something happened in setting up the request that triggered an Error
-                    console.log('Error', error.message);
-                }
-                console.log(error.config);
-            });
+            const response = yield axios_1.default.get(`${SEARCH_API}`, { params: { q: query } });
+            return response.data;
         });
     }
     /**
      * @param {string} query
-     * @return {Promise<import('imdb').ResponseData | undefined>}
+     * @return {Promise<ResponseData | undefined>}
      */
     static searchMovies(query) {
         return __awaiter(this, void 0, void 0, function* () {
-            return axios_1.default.get(`${SEARCH_API}`, { params: { q: query } })
-                .then(response => {
-                // handle success
-                return response.data;
-            })
-                .catch(error => {
-                /** ------------------------------------------------------
-                 * TODO: - OPTION 1: Set up Winston to persist logs or
-                 *       - OPTION 2: Set up Sentry
-                 * ------------------------------------------------------
-                 * I prefer sentry because of it session replay
-                 * feature. Helps in knowing what actions the
-                 * user performed that led to an Error
-                 * ------------------------------------------------------*/
-                if (error.response) {
-                    // The request was made and the server responded with a status code
-                    // that falls out of the range of 2xx
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                }
-                else if (error.request) {
-                    // The request was made but no response was received
-                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                    // http.ClientRequest in node.js
-                    console.log(error.request);
-                }
-                else {
-                    // Something happened in setting up the request that triggered an Error
-                    console.log('Error', error.message);
-                }
-                console.log(error.config);
-            });
+            const response = yield axios_1.default.get(`${SEARCH_API}`, { params: { q: query } });
+            return response.data;
         });
     }
     /**
      * @param {string} id
-     * @return {Promise<import('imdb').ResponseData | undefined>}
+     * @return {Promise<ResponseData | undefined>}
      */
     static getMovieDetails(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return axios_1.default.get(`${SEARCH_API}`, { params: { tt: id } })
-                .then(response => {
-                // handle success
-                return response.data;
-            })
-                .catch(error => {
-                /** ------------------------------------------------------
-                 * TODO: - OPTION 1: Set up Winston to persist logs or
-                 *       - OPTION 2: Set up Sentry
-                 * ------------------------------------------------------
-                 * I prefer sentry because of it session replay
-                 * feature. Helps in knowing what actions the
-                 * user performed that led to an Error
-                 * ------------------------------------------------------*/
-                if (error.response) {
-                    // The request was made and the server responded with a status code
-                    // that falls out of the range of 2xx
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                }
-                else if (error.request) {
-                    // The request was made but no response was received
-                    // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-                    // http.ClientRequest in node.js
-                    console.log(error.request);
-                }
-                else {
-                    // Something happened in setting up the request that triggered an Error
-                    console.log('Error', error.message);
-                }
-                console.log(error.config);
-            });
+            const response = yield axios_1.default.get(`${SEARCH_API}`, { params: { tt: id } });
+            return response.data;
         });
     }
 }

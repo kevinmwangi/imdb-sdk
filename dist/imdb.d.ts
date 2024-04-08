@@ -1,17 +1,18 @@
+import { ResponseData } from './types';
 export declare class IMDB {
     /**
      * @param {string} query
-     * @return {Promise<import('imdb').ResponseData | undefined>}
+     * @return {Promise<ResponseData | undefined>}
      */
-    static getRandomMovie(query: string): Promise<any>;
+    static getRandomMovie(query: string): Promise<ResponseData | undefined>;
     /**
      * @param {string} query
-     * @return {Promise<import('imdb').ResponseData | undefined>}
+     * @return {Promise<ResponseData | undefined>}
      */
-    static searchMovies(query: string): Promise<any>;
+    static searchMovies(query: string): Promise<ResponseData | undefined>;
     /**
      * @param {string} id
-     * @return {Promise<import('imdb').ResponseData | undefined>}
+     * @return {Promise<ResponseData | undefined>}
      */
-    static getMovieDetails(id: string): Promise<any>;
+    static getMovieDetails(id: string): Promise<ResponseData | undefined>;
 }

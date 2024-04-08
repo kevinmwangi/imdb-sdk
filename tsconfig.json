@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types",
-      "./imdb.d.ts"
+      "./types.d.ts"
     ],
     "declaration": true,
     "outDir": "./dist"
