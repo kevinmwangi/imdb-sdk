@@ -3,6 +3,11 @@ import axios from 'axios';
 const SEARCH_API = 'https://search.imdbot.workers.dev/';
 
 export class IMDB {
+
+    /**
+     * @param {string} query
+     * @return {Promise<import('imdb-sdk').ResponseData | undefined>}
+     */
     static async getRandomMovie(query: string) {
         axios.get(`${SEARCH_API}`, {params: {q: query}})
             .then(response => {
@@ -38,6 +43,10 @@ export class IMDB {
             });
     }
 
+    /**
+     * @param {string} query
+     * @return {Promise<import('imdb-sdk').ResponseData | undefined>}
+     */
     static async searchMovies(query: string) {
         axios.get(`${SEARCH_API}`, {params: {q: query}})
             .then(response => {
@@ -73,6 +82,10 @@ export class IMDB {
             });
     }
 
+    /**
+     * @param {string} id
+     * @return {Promise<import('imdb-sdk').ResponseData | undefined>}
+     */
     static async getMovieDetails(id: string) {
         axios.get(`${SEARCH_API}`, {params: {tt: id}})
             .then(response => {
