@@ -5,3 +5,6 @@
 out
 gen
 /.gitignore
+/imdb.ts
+/imdb.js
+/types.ts
