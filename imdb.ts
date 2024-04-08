@@ -9,7 +9,7 @@ export class IMDB {
      * @return {Promise<import('imdb-sdk').ResponseData | undefined>}
      */
     static async getRandomMovie(query: string) {
-        axios.get(`${SEARCH_API}`, {params: {q: query}})
+        return axios.get(`${SEARCH_API}`, {params: {q: query}})
             .then(response => {
                 // handle success
                 return response.data;
@@ -48,7 +48,7 @@ export class IMDB {
      * @return {Promise<import('imdb-sdk').ResponseData | undefined>}
      */
     static async searchMovies(query: string) {
-        axios.get(`${SEARCH_API}`, {params: {q: query}})
+        return axios.get(`${SEARCH_API}`, {params: {q: query}})
             .then(response => {
                 // handle success
                 return response.data;
@@ -87,7 +87,7 @@ export class IMDB {
      * @return {Promise<import('imdb-sdk').ResponseData | undefined>}
      */
     static async getMovieDetails(id: string) {
-        axios.get(`${SEARCH_API}`, {params: {tt: id}})
+        return axios.get(`${SEARCH_API}`, {params: {tt: id}})
             .then(response => {
                 // handle success
                 return response.data;
