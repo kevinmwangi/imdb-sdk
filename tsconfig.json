@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
+    "moduleResolution": "node",
     "target": "es2016",
     "module": "commonjs",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "typeRoots": ["./node_modules/@types", "./imdb-sdk.d.ts"]
   }
 }
