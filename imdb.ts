@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { ResponseData } from './types';
 const SEARCH_API = 'https://search.imdbot.workers.dev/';
+import {ResponseData} from "./types";
 
 export class IMDB {
     /**

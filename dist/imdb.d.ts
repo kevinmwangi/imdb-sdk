@@ -1,4 +1,4 @@
-import { ResponseData } from './types';
+import { ResponseData } from "./types";
 export declare class IMDB {
     /**
      * @param {string} query

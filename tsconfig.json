@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "typeRoots": ["./node_modules/@types",
-      "./types.d.ts"
+      "./types.ts"
     ],
     "declaration": true,
     "outDir": "./dist"

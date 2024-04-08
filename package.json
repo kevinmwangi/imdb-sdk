@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "SDK that fetches movies from https://search.imdbot.workers.dev/ endpoints",
   "main": "dist/imdb.js",
-  "types": "dist/imdb.d.ts",
+  "types": "dist/types.ts",
   "scripts": {
     "prepublish": "rimraf dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
