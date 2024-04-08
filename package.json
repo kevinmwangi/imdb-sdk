@@ -2,7 +2,7 @@
   "name": "imdb-sdk",
   "version": "1.0.0",
   "description": "SDK that fetches movies from https://search.imdbot.workers.dev/ endpoints",
-  "main": "imdb.ts",
+  "main": "imdb.js",
   "types": "imdb-sdk.d.ts",
   "scripts": {
     "prepublish": "tsc",
