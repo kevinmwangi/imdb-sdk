@@ -4,16 +4,4 @@
 *.iml
 out
 gen
-/.gitignore
-/imdb.ts
-/imdb.js
-/types.ts
-/details.ts
-
-/movie.ts
-
-/response.ts
-
-/package-lock.json
-
-/.npmignore
+.DS_Store

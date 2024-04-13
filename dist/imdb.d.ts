@@ -1,4 +1,4 @@
-import { ResponseData } from "./types";
+import { ResponseData } from "./types/types";
 export declare class IMDB {
     /**
      * @deprecated @deprecated since version 1.2.Use getAllMovies instead.
