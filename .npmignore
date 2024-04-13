@@ -8,3 +8,12 @@ gen
 /imdb.ts
 /imdb.js
 /types.ts
+/details.ts
+
+/movie.ts
+
+/response.ts
+
+/package-lock.json
+
+/.npmignore

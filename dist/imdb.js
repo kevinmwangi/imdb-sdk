@@ -1,50 +1,84 @@
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.IMDB = void 0;
-const axios_1 = __importDefault(require("axios"));
-const SEARCH_API = 'https://search.imdbot.workers.dev/';
-class IMDB {
-    /**
-     * @param {string} query
-     * @return {Promise<ResponseData | undefined>}
-     */
-    static getRandomMovie(query) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const response = yield axios_1.default.get(`${SEARCH_API}`, { params: { q: query } });
-            return response.data;
-        });
+(function (factory) {
+    if (typeof module === "object" && typeof module.exports === "object") {
+        var v = factory(require, exports);
+        if (v !== undefined) module.exports = v;
     }
-    /**
-     * @param {string} query
-     * @return {Promise<ResponseData | undefined>}
-     */
-    static searchMovies(query) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const response = yield axios_1.default.get(`${SEARCH_API}`, { params: { q: query } });
-            return response.data;
-        });
+    else if (typeof define === "function" && define.amd) {
+        define(["require", "exports", "axios"], factory);
     }
-    /**
-     * @param {string} id
-     * @return {Promise<ResponseData | undefined>}
-     */
-    static getMovieDetails(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const response = yield axios_1.default.get(`${SEARCH_API}`, { params: { tt: id } });
-            return response.data;
-        });
+})(function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.IMDB = void 0;
+    const axios_1 = __importDefault(require("axios"));
+    const SEARCH_API = 'https://search.imdbot.workers.dev/';
+    class IMDB {
+        /**
+         * @deprecated @deprecated since version 1.2.Use getAllMovies instead.
+         * @param {string[]} queries
+         * @return {Promise<(ResponseData | Error)[]>}
+         */
+        static async searchMovies(queries) {
+            const promises = queries.map(query => this.searchMovie(query).catch(error => error));
+            return await Promise.all(promises);
+        }
+        /**
+         * @deprecated since version 1.2.Use getMovie instead.
+         * @param {string} query
+         * @return {Promise<ResponseData | Error>}
+         */
+        static async searchMovie(query) {
+            try {
+                const response = await axios_1.default.get(`${SEARCH_API}`, { params: { q: query } });
+                return response.data;
+            }
+            catch (error) {
+                return error;
+            }
+        }
+        /**
+         * @param {string[]} queries
+         * @return {Promise<{results: ResponseData[], errors: Error[]}>}
+         * TODO: HANDLE ALL INSTANCES OF REJECTION
+         *       Not all rejections will be instances of Error.
+         */
+        static async *getAllMovies(queries) {
+            const promises = queries.map(query => this.getMovie(query)
+                .then(result => (result instanceof Error ? { error: result } : { result }))
+                .catch(error => ({ error: new Error(error) })));
+            for await (const result of promises) {
+                yield result;
+            }
+        }
+        /**
+         * @param {string} query
+         * @return {Promise<ResponseData | Error>}
+         */
+        static async getMovie(query) {
+            try {
+                const response = await axios_1.default.get(`${SEARCH_API}`, { params: { q: query } });
+                return response.data;
+            }
+            catch (error) {
+                return error;
+            }
+        }
+        /**
+         * @param {string} id
+         * @return {Promise<ResponseData | Error>}
+         */
+        static async getMovieDetails(id) {
+            try {
+                const response = await axios_1.default.get(`${SEARCH_API}`, { params: { tt: id } });
+                return response.data;
+            }
+            catch (error) {
+                return error;
+            }
+        }
     }
-}
-exports.IMDB = IMDB;
+    exports.IMDB = IMDB;
+});
