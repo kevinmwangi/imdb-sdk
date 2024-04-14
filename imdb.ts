@@ -1,6 +1,6 @@
 import axios from 'axios';
 const SEARCH_API = 'https://search.imdbot.workers.dev/';
-import { ResponseData } from "./types/types";
+import { ResponseData, MovieData } from "./types/types";
 
 export class IMDB {
     /**
@@ -33,7 +33,7 @@ export class IMDB {
      * TODO: HANDLE ALL INSTANCES OF REJECTION
      *       Not all rejections will be instances of Error.
      */
-    static async *getAllMovies(queries: string[]): AsyncIterable<{result?: ResponseData, error?: Error}> {
+    static async *getAllMovies(queries: string[]): AsyncIterable<{result?: MovieData, error?: Error}> {
         const promises = queries.map( query =>
             this.getMovie( query )
                 .then(result => (result instanceof Error ? {error: result} : {result}))
@@ -46,12 +46,12 @@ export class IMDB {
 
     /**
      * @param {string} query
-     * @return {Promise<ResponseData | Error>}
+     * @return {Promise<MovieData | Error>}
      */
-    static async getMovie(query: string): Promise<ResponseData | Error> {
+    static async getMovie(query: string): Promise<MovieData | Error> {
         try {
             const response = await axios.get(`${SEARCH_API}`, {params: {q: query}});
-            return response.data as ResponseData;
+            return response.data as MovieData;
         } catch ( error ){ return error as Error; }
     }
 
