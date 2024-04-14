@@ -11,6 +11,7 @@
     "typeRoots": ["./node_modules/@types", "./dist/types"],
     "declaration": true,
     "outDir": "./dist",
-    "lib": ["ES2020"]
+    "lib": ["dom","ES2020"],
+    "types": ["node"]
   }
 }
